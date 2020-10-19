@@ -94,7 +94,29 @@ class Manager extends Employee {
 */
 
 //Code Here
-
+class ProgressiveManager extends Manager {
+  constructor(first_name, last_name, email, age) {
+    super(first_name, last_name, email, age)
+    this.title = "Not a manager";
+    this.bonus = 0;
+  }
+  titleChecker() {
+    if(reports.length === 0){
+      this.title = "Not a manager";
+    } else if(reports.length >= 1 && reports.length <= 3){
+      this.title = "Barely Manager";
+    } else if(reports.length >= 4 && reports.length <= 10){
+      this.title = "Mostly Manager";
+    } else if(reports.length >= 11 && reports.length <= 50){
+      this.title = "Manager";
+    } else if(reports.length >= 51 && reports.length <= 100){
+      this.title = "Manager Plus";
+    } else if(reports.length >= 101){
+      this.title = "Bestest Manager";
+    }
+  }
+  
+}
 
 
 ////////// PROBLEM 4 - Black Diamond //////////
