@@ -125,7 +125,7 @@ function motivation( firstname, lastname ) {
 
   // code message function here.
   function message() {
-    return `${this.welcomeText} ${this.firstname} ${this.lastname}.`
+    return `${welcomeText} ${firstname} ${lastname}.`
   }
   //Uncommment this to return the value of your message function
   return message;
@@ -146,7 +146,7 @@ var module = (function() {
   var person = {
     name: "phillip",
     age: 29,
-    location: "Utah"
+    location: "Utah",
   };
 
   function privateMethod(){
@@ -157,8 +157,12 @@ var module = (function() {
   // outside our lexical scope
   return {
     // Code here.
+    publicMethod: function() {
+      return privateMethod();
+    }
   };
 })();
+module.publicMethod()
 
 
 
@@ -176,6 +180,12 @@ function secretNumber() {
 
   return {
     // Code here
+    addToSecret: function (num) {
+      return secret += num;
+    },
+    takeAwayFromSecret: function (num){
+      return secret -= num;
+    }
   };
 }
 
@@ -201,9 +211,12 @@ function secretNumber() {
 
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
-    setTimeout(function() {
-      console.log(i);
-    }, i * 1000);
+    function counter(holder) {
+      setTimeout(function() {
+        console.log(holder);
+      }, holder * 1000);
+    }
+  counter(i);
   }
 }
 timeOutCounter();
