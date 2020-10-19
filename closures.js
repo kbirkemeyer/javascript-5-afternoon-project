@@ -93,17 +93,22 @@ function makeCounter() {
 
 function counterFactory(value) {
   // Code here.
-
+  let num = value;
   return {
-
+    inc: function() {
+      return num += 1;
+    },
+    dec: function (val) {
+      return num -= 1;
+    }
   };
 }
 
-counter = counterFactory(10);
-// counter.inc() // 11
-// counter.inc() // 12
-// counter.inc() // 13
-// counter.dec() // 12
+let counter = counterFactory(10);
+counter.inc() // 11
+counter.inc() // 12
+counter.inc() // 13
+counter.dec() // 12
 
 
 
@@ -119,9 +124,11 @@ function motivation( firstname, lastname ) {
   var welcomeText = "You're doing awesome, keep it up";
 
   // code message function here.
-
+  function message() {
+    return `${this.welcomeText} ${this.firstname} ${this.lastname}.`
+  }
   //Uncommment this to return the value of your message function
-  //return message;
+  return message;
 }
 
 var greeting = motivation('Billy', 'Bob'); // 'You're doing awesome keep it up Billy Bob.
