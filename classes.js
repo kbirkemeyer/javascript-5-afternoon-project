@@ -58,16 +58,16 @@ class Employee {
 
 //Code Here
 class Manager extends Employee {
-  constructor (reports) {
+  constructor (first_name, last_name, email, age) {
     super(first_name, last_name, email, age);
-    let reports = [];
+    this.reports = [];
   }
     hire(employee) {
     return this.reports.push(employee)
     };
 
     fire(index) {
-      return reports.splice(index, 1)
+      return this.reports.splice(index, 1)
     };
   
 }
