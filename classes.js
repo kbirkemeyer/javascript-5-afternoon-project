@@ -95,27 +95,35 @@ class Manager extends Employee {
 
 //Code Here
 class ProgressiveManager extends Manager {
-  constructor(first_name, last_name, email, age) {
-    super(first_name, last_name, email, age)
+  constructor(first_name, last_name, email, age, reports) {
+    super(first_name, last_name, email, age, reports);
     this.title = "Not a manager";
     this.bonus = 0;
   }
-  titleChecker() {
-    if(reports.length === 0){
+  updateTitle() {
+    if(this.reports.length === 0){
       this.title = "Not a manager";
-    } else if(reports.length >= 1 && reports.length <= 3){
+    } else if(this.reports.length >= 1 && this.reports.length <= 3){
       this.title = "Barely Manager";
-    } else if(reports.length >= 4 && reports.length <= 10){
+    } else if(this.reports.length >= 4 && this.reports.length <= 10){
       this.title = "Mostly Manager";
-    } else if(reports.length >= 11 && reports.length <= 50){
+    } else if(this.reports.length >= 11 && this.reports.length <= 50){
       this.title = "Manager";
-    } else if(reports.length >= 51 && reports.length <= 100){
+    } else if(this.reports.length >= 51 && this.reports.length <= 100){
       this.title = "Manager Plus";
-    } else if(reports.length >= 101){
+    } else {
       this.title = "Bestest Manager";
     }
   }
-  
+  hire() {
+    super.hire();
+    this.updateTitle();
+  } 
+  fire() {
+    super.fire();
+    this.bonus += 100;
+    this.updateTitle();
+  } 
 }
 
 
@@ -143,5 +151,25 @@ class ProgressiveManager extends Manager {
 */
 
 //Code Here
+class Machine {
+  constructor(){
+    this.widgets_made_count = 0;
+    this.wear_and_tear_count = 0;
+    this.needs_reboot = false;
+  };
 
+  makeWidgets(num) {
+    this.widgets_made_count += num;
+    this.wear_and_tear_count = Math.floor(this.widgets_made_count/50)
+  };
+
+  fixMachine() {
+
+  };
+
+  reboot() {
+
+  };
+
+}
 
